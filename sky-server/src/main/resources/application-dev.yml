@@ -9,8 +9,10 @@ sky:
   redis:
     host: localhost
     port: 6379
-    password: 123698745
     database: 0
+  wechat:
+    appid:  wx99f358f8ac559ba6
+    secret: 549368899d57b1ead8aa5b2dd3fca263
 oss:
   qiniu:
     domain: "cdn.emotionalbug.top"
