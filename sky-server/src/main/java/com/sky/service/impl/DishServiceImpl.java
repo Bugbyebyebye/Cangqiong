@@ -64,6 +64,10 @@ public class DishServiceImpl implements DishService {
         return new PageResult(page.getTotal(),page.getResult());
     }
 
+    /**
+     * 批量删除菜品
+     * @param ids
+     */
     @Override
     public void deleteBatch(List<Long> ids) {
         // 判断菜品是否起售，起售则不能删除
@@ -87,6 +91,11 @@ public class DishServiceImpl implements DishService {
         dishMapper.deleteFlavorByDishIds(ids);
     }
 
+    /**
+     * 根据id查询菜品
+     * @param id
+     * @return
+     */
     @Override
     public DishVO getByIdWithFlavor(Long id) {
         // 菜品基本信息查询
@@ -103,6 +112,10 @@ public class DishServiceImpl implements DishService {
         return null;
     }
 
+    /**
+     * 修改菜品
+     * @param dishDTO
+     */
     @Override
     public void updateWithFlavor(DishDTO dishDTO) {
         Dish dish = new Dish();
@@ -119,5 +132,23 @@ public class DishServiceImpl implements DishService {
             });
             dishMapper.insertFlavors(flavors);
         }
+    }
+
+    /**
+     * 根据条件查询菜品数据
+     * @param dish
+     * @return
+     */
+    @Override
+    public List<DishVO> listWithFlavor(Dish dish) {
+        List<DishVO> dishList = dishMapper.list(dish);
+        for (DishVO d : dishList) {
+            DishVO dishVO = new DishVO();
+            BeanUtils.copyProperties(d, dishVO);
+
+            List<DishFlavor> flavors = dishMapper.getFlavorsByDishId(d.getId());
+            dishVO.setFlavors(flavors);
+        }
+        return dishList;
     }
 }
