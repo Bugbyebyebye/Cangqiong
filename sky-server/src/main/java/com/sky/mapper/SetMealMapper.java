@@ -42,4 +42,7 @@ public interface SetMealMapper {
 
     @AutoFill(value = OperationType.UPDATE)
     void update(SetMeal setMeal);
+
+    @Select("select * from setmeal where id = #{setmealId}")
+    SetMeal getById(Long setmealId);
 }
