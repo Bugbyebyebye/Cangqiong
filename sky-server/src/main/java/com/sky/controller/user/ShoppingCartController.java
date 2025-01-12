@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Slf4j
-@Api("购物车")
+@Api(tags = "购物车")
 @RestController
 @RequestMapping("/user/shoppingCart")
 public class ShoppingCartController {
@@ -39,5 +39,10 @@ public class ShoppingCartController {
         return list;
     }
 
-
+    @DeleteMapping("/clean")
+    public void cleanShoppingCart() {
+        log.info("清空购物车");
+        Long userId = BaseContext.getCurrentId();
+        shoppingCartService.clean(userId);
+    }
 }

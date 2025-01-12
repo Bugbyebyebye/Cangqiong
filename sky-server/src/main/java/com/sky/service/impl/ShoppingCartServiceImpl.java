@@ -82,4 +82,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         List<ShoppingCart> list = shoppingCartMapper.list(shoppingCart);
         return list;
     }
+
+    @Override
+    public void clean(Long userId) {
+        shoppingCartMapper.deleteByUserId(userId);
+    }
 }
