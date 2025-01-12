@@ -31,12 +31,12 @@ public class ShoppingCartController {
     }
 
     @GetMapping("/list")
-    public List<ShoppingCart> showShoppingCart() {
+    public Result<List<ShoppingCart>> showShoppingCart() {
         log.info("查询购物车");
         Long userId = BaseContext.getCurrentId();
         ShoppingCart shoppingCart = ShoppingCart.builder().userId(userId).build();
         List<ShoppingCart> list = shoppingCartService.list(shoppingCart);
-        return list;
+        return Result.success(list);
     }
 
     @DeleteMapping("/clean")
