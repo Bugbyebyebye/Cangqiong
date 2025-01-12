@@ -151,4 +151,14 @@ public class DishServiceImpl implements DishService {
         }
         return dishList;
     }
+
+    /**
+     * 批量起售停售
+     * @param status
+     * @param id
+     */
+    @Override
+    public void startOrStop(Integer status, Long id) {
+
+    }
 }
