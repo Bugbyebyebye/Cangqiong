@@ -21,7 +21,7 @@ public interface OrderMapper {
     void insertOrderDetail(List<OrderDetail> orderDetails);
 
     @Select("select * from orders where status = #{status} and order_time < #{orderTime}")
-    List<Orders> getByStatusAndOrderTimeLT(Integer status, LocalDate orderTime);
+    List<Orders> getByStatusAndOrderTimeLT(Integer status, LocalDateTime orderTime);
 
     @Update("update orders set status = #{status}, cancel_reason = #{cancelReason}, cancel_time = #{cancelTime} where id = #{id}")
     void update(Orders order);
@@ -29,7 +29,7 @@ public interface OrderMapper {
     @Select("select * from orders where id = #{id}")
     Orders getById(Long id);
 
-    Double sumByMap(HashMap map);
+    Double sumByMap(Map map);
 
     Integer countByMap(Map map);
 
