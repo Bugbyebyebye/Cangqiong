@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface OrderMapper {
@@ -28,4 +29,6 @@ public interface OrderMapper {
     Orders getById(Long id);
 
     Double sumByMap(HashMap map);
+
+    Integer countByMap(Map map);
 }
