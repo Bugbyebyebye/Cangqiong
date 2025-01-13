@@ -21,4 +21,7 @@ public interface OrderMapper {
 
     @Update("update orders set status = #{status}, cancel_reason = #{cancelReason}, cancel_time = #{cancelTime} where id = #{id}")
     void update(Orders order);
+
+    @Select("select * from orders where id = #{id}")
+    Orders getById(Long id);
 }
